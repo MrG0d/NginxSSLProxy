@@ -6,4 +6,4 @@ fi
 
 crontab /app/crontab
 
-exec "@$"
+exec "$@"
