@@ -7,3 +7,5 @@ fi
 crontab /app/crontab
 
 exec "$@"
+
+nginx -g 'daemon off;'
