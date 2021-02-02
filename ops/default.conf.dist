@@ -1,6 +1,6 @@
 server {
     server_name __SERVER_NAME__;
-    ssl_certificate /etc/letsencrypt/live/__SERVER_NAME__/fullchain.pem
+    ssl_certificate /etc/letsencrypt/live/__SERVER_NAME__/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/__SERVER_NAME__/privkey.pem;
 
     location /processing/ {
