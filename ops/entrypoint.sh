@@ -10,5 +10,5 @@ crontab /app/crontab
 exec "$@"
 
 tail -f
-#
-#nginx -g 'daemon off;'
+
+nginx -g 'daemon off;'
