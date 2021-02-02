@@ -4,11 +4,7 @@ if [ ! -f "/etc/letsencrypt/live/$SERVER_NAME/fullchain.pem" ]; then
     certbot certonly --standalone -d "$SERVER_NAME" --email "$EMAIL" -n --agree-tos --expand
 fi
 
-
 crontab /app/crontab
 
-exec "$@"
-
-tail -f
-
+echo "RUN nginx"
 nginx -g 'daemon off;'
