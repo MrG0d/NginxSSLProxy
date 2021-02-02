@@ -7,6 +7,7 @@ WORKDIR app
 RUN apk add --no-cache certbot
 
 COPY ./default.conf /etc/nginx/conf.d/default.conf
+COPY ./ops/nginx.conf /etc/nginx/nginx.conf
 COPY ./ops/crontab /app/crontab
 COPY ./ops/entrypoint.sh /app/entrypoint.sh
 
