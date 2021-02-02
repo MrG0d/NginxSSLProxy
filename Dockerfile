@@ -8,8 +8,6 @@ RUN apk add --no-cache certbot
 
 COPY ./default.conf /etc/nginx/conf.d/default.conf
 COPY ./ops/crontab /app/crontab
-    #RUN certbot certonly --standalone -d online-exercise.evil-brain.net --email ivan.kudryavsky@requestum.com -n --agree-tos --expand
+COPY ./ops/entrypoint.sh /app/entrypoint.sh
 
-
-CMD tail -f
-#CMD /bin/sh -c "envsubst '\$SERVER_NAME' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf"
+ENTRYPOINT /app/entrypoint.sh
