@@ -1,9 +1,10 @@
 server {
-    server_name online-exercise.evil-brain.net;
+    server_name ${SERVER_NAME};
+    ssl_certificate /etc/letsencrypt/live/${SERVER_NAME}/fullchain.pem
+    ssl_certificate_key /etc/letsencrypt/live/${SERVER_NAME}/privkey.pem;
 
     location /processing/ {
-        set $upstream processing:8001/;
-        proxy_pass $upstream;
+        proxy_pass http://${DOCKER_IP}:8001/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
@@ -15,8 +16,7 @@ server {
     }
 
     location / {
-        set $upstream backend:8000/;
-        proxy_pass $upstream;
+        proxy_pass http://${DOCKER_IP}:8000/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
@@ -26,5 +26,6 @@ server {
         proxy_read_timeout 60s;
         proxy_send_timeout 60s;
     }
+
 }
 
