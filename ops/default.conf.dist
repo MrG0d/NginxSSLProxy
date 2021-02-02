@@ -1,9 +1,9 @@
 server {
-    listen 443 ssl;
-    server_name: mysite.com
+    server_name online-exercise.evil-brain.net;
 
     location /processing/ {
-        proxy_pass http://processing:8001/;
+        set $upstream processing:8001/;
+        proxy_pass $upstream;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
@@ -15,7 +15,8 @@ server {
     }
 
     location / {
-        proxy_pass http://backend:8000/;
+        set $upstream backend:8000/;
+        proxy_pass $upstream;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
@@ -25,9 +26,5 @@ server {
         proxy_read_timeout 60s;
         proxy_send_timeout 60s;
     }
-
-    # use default log paths!! - these will be forwarded to docker log collector
-    error_log /var/log/nginx/error.log debug;
-    access_log /var/log/nginx/access.log;
 }
 
