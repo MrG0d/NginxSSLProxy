@@ -4,8 +4,6 @@ services:
     proxy:
         build:
             context: .
-            args:
-                PATH_TO_HOST_CONF: ${PATH_TO_HOST_CONF}
         environment:
             SERVER_NAME: ${SERVER_NAME}
             EMAIL: ${EMAIL}

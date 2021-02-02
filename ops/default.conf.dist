@@ -1,5 +1,6 @@
 server {
     listen 443 ssl;
+    server_name: mysite.com
 
     location /processing/ {
         proxy_pass http://processing:8001/;
