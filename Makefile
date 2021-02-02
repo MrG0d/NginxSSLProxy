@@ -7,3 +7,7 @@ start:
 init:
 	cp .env.dist .env \
 	&& cp ops/default.conf.dist default.conf
+
+get_ip:
+	ifconfig | grep "docker"
+

@@ -5,6 +5,8 @@ MAINTAINER ivan.kudryavsky@requestum.com
 RUN apk add --no-cache certbot
 
 COPY ./default.conf /etc/nginx/conf.d/default.conf
-#RUN certbot certonly --standalone -d example.com,wwcdw.example.com --email YOUR_EMAIL -n --agree-tos --expand
+    #RUN certbot certonly --standalone -d online-exercise.evil-brain.net --email ivan.kudryavsky@requestum.com -n --agree-tos --expand
 
+
+CMD tail -f
 #CMD /bin/sh -c "envsubst '\$SERVER_NAME' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf"
